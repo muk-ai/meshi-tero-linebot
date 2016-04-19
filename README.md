@@ -1,2 +1,2 @@
 # meshi-tero-linebot
-飯テロ
+飯テロの時間じゃ！
