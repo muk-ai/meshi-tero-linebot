@@ -1,0 +1,20 @@
+machine:
+  python:
+    version: 3.5.0
+dependencies:
+  override:
+    - pip install -r ./falcon/requirements.txt
+    - |
+      uwsgi \
+        --master \
+        --http :3031 \
+        --wsgi app:application \
+        --python-path ./falcon/ \
+        --processes 2 \
+        --daemonize ./falcon/uwsgi.log
+test:
+  override:
+    - pwd
+    - ip a
+    - py.test ./falcon/test/test_hello.py
+    - exit 0
