@@ -1,0 +1,4 @@
+uwsgi
+falcon
+requests
+pytest

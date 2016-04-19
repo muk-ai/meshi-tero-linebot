@@ -1,0 +1,25 @@
+version: "2"
+services:
+  ngx-mruby:
+    build:
+      context: ./ngx-mruby
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/etc/letsencrypt/archive/food-porn.linebot.muk.ai/:/usr/local/nginx/certs/"
+    depends_on:
+      - falcon
+    networks:
+      - flat-network
+  falcon:
+    build:
+      context: ./falcon
+    stop_signal: SIGQUIT
+    expose:
+      - "3031"
+    networks:
+      - flat-network
+    env_file: .env
+networks:
+  flat-network:
