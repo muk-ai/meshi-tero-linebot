@@ -1,6 +1,7 @@
 import os
 import json
 import random
+from pprint import pprint
 import requests
 import falcon
 
@@ -75,7 +76,9 @@ class Resource():
                 'X-Line-ChannelSecret': os.environ['LINE_CHANNEL_SECRET'],
                 'X-Line-Trusted-User-With-ACL': os.environ['LINE_CHANNEL_MID']
             }
-            requests.post(LINEBOT_ENDPOINT_URI, data=data, headers=headers)
+            r = requests.post(LINEBOT_ENDPOINT_URI, data=json.dumps(data), headers=headers)
+            print(data)
+            print(r.text)
 
         resp.status = falcon.HTTP_200
 
