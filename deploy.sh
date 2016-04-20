@@ -1,6 +1,6 @@
 #!/bin/sh
 
-network_name=restapi_flat-network
+network_name=meshiterolinebot_flat-network
 
 if [ -z $1 ]; then
   echo "Usage: $0 docker_image_name"
